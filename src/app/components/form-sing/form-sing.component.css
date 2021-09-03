@@ -1,0 +1,54 @@
+#inparea {
+
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
+div.col-sm-10 {
+  margin-top: 10px;
+}
+
+div.col-sm-5 {
+  margin-right: 20px;
+}
+
+textarea {
+  width: 250px;
+  height: 100px;
+  border: 3px solid black;
+  margin-left: 200px;
+}
+.text-area {
+  margin-left: 285px;
+  font-weight: bolder;
+}
+
+#email{
+  margin-left: 125px;
+}
+
+#phone {
+  margin-left: 85px;
+}
+
+#referanceid {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 250px;
+}
+
+#btnsave {
+  margin-top: 10px;
+  /*margin-left: 300px;*/
+  width: 750px;
+
+}
+.btn-warning {
+  margin-left: 250px;
+  width: 184px;
+}
+
+h4 {
+  margin-top: 8px;
+  margin-left: 230px;
+}

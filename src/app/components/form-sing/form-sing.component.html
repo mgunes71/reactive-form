@@ -1,0 +1,88 @@
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-lg-5">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div id="inparea">
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label " style="font-weight: bolder">Id:</label>
+            <div class="col-sm-10">
+              <input #idtxt type="text" class="form-control" style="font-weight: bolder" placeholder="Please input your identification" formControlName="id">
+              <div *ngIf="loginForm.get('id').hasError('max') && loginForm.get('id').dirty"><p><b>Id maxLength error</b></p></div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-weight: bolder">FullName:</label>
+            <div class="col-sm-10">
+              <input #nametxt type="text" class="form-control" id="name" placeholder="col-form-label" formControlName="name">
+              <div id="nameerror" *ngIf="loginForm.get('name').hasError('required')  && loginForm.get('name').dirty"><b>Please add Fullname</b></div>
+
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-weight: bolder">Job:</label>
+            <div class="col-sm-10">
+              <input #jobtxt type="email" class="form-control" id="job" placeholder="col-form-label" formControlName="job">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-weight: bolder">Age:</label>
+            <div class="col-sm-10">
+              <input #agetxt type="email" class="form-control" id="age" placeholder="col-form-label" formControlName="age">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-weight: bolder">Country:</label>
+            <div class="col-sm-10">
+              <input #countrytxt type="email" class="form-control" id="country" placeholder="col-form-label"
+                     formControlName="country">
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div formGroupName="contact" class="row">
+            <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label" style="margin-left: 200px; font-weight:bold " >Email</label>
+              <input #emailtxt type="text" formControlName="email" id="email">
+
+            </div>
+            <div class="col-sm-5">
+              <label class="col-sm-2 col-form-label" style="margin-left: 150px ;font-weight:bold">Phone</label>
+              <input #phonetxt type="text" formControlName="phone" id="phone">
+
+            </div>
+            <div>
+              <label class="text-area">Textarea</label>
+              <textarea #addresstxt class="form-control " id="validationTextarea" placeholder="Required example textarea" formControlName="address" required></textarea>
+            </div>
+
+
+          </div>
+
+
+        </div>
+        <div>
+          <div #reftxt formArrayName="referance">
+            <h4>Please add referances</h4>
+            <div *ngFor="let refer of referance.controls; let i = index;">
+
+              <input  class="btn-danger" id="referanceid" type="text" [formControlName]="i">
+            </div>
+            <button class="btn-warning" (click)="newReferance()"><b>Add Referance</b></button>
+          </div>
+          <div>
+            <button  [disabled]="!loginForm.valid" id="btnsave" type="submit" class="btn btn-danger">Save</button>
+<!--            <button (click)="addUser(idtxt, nametxt, jobtxt, agetxt, countrytxt, emailtxt, phonetxt, addresstxt, reftxt)" >Add</button>-->
+            <p><b>{{user|json}}</b></p>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+
