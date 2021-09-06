@@ -6,29 +6,35 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { FormSingComponent } from './components/form-sing/form-sing.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import {AccountService} from "./services/account.service";
-import {LoginGuard} from "./guards/login.guard";
+import {LoginGuard} from "./libs/guards/login.guard";
 import {UserAddService} from "./services/user-add.service";
+import {HighligthDirective} from "./libs";
+import {UsersService} from "./services/users.service";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    UserPageComponent,
     FormSingComponent,
-    HomePageComponent,
-    LoginComponent
+    // HomePageComponent,
+    LoginComponent,
+    HighligthDirective
+
+    // UserPageComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
   ],
-  providers: [AccountService,LoginGuard,UserAddService],
+  providers: [AccountService,UserAddService,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

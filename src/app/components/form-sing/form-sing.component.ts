@@ -3,6 +3,7 @@ import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {User} from "../../models/user";
 import {Referance} from "../../models/referance";
 import {UserAddService} from "../../services/user-add.service";
+import {BlacklistValidator} from "../../libs";
 
 @Component({
   selector: 'app-form-sing',
@@ -11,13 +12,13 @@ import {UserAddService} from "../../services/user-add.service";
 })
 export class FormSingComponent implements OnInit {
   loginForm = this.fb.group({
-    id:["",  Validators.max(50000)],
-    name:["",  Validators.required],
-    job:["", Validators.required],
-    age:["", Validators.required],
-    country:["", Validators.required],
+    id:["11111111111",  [Validators.minLength(1),Validators.maxLength(10), Validators.required]],
+    name:["Murat", [ BlacklistValidator('ğ'), Validators.required]],
+    job:["Makine Mühendisi and SoftWare Dev.", [Validators.required, Validators.maxLength(33)]],
+    age:["27", Validators.required],
+    country:["Turkiye", Validators.required],
     contact: this.fb.group({
-      email: ["", Validators.required],
+      email: ["", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       phone: ["", Validators.required],
       address: ["", Validators.required]
     }),
@@ -39,6 +40,7 @@ export class FormSingComponent implements OnInit {
   onSubmit(){
     this.user = Object.assign({}, this.loginForm.value);
     this.user.referances = Object.assign({}, Object.assign({}, this.loginForm.value).referances) as Referance[];
+    console.log(this.loginForm)
 
 
 

@@ -1,4 +1,6 @@
+import {Validators} from "@angular/forms";
+
 export class UserLogin {
-  userName:string;
+  email:string;
   password:string;
 }
