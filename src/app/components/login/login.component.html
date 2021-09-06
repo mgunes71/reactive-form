@@ -1,10 +1,17 @@
-<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" class="form-signin">
+<form [formGroup]="userLogForm" #loginForm="ngForm" (ngSubmit)="onSubmit()" class="form-signin">
   <img class="mb-4" src="https://www.growthengineering.co.uk/wp-content/uploads/2014/05/Interaction-design-user-experience.png" alt="" width="72" height="72">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
   <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" #userName="ngModel" [(ngModel)]="model.userName" name="userName" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  <input type="email"  formControlName="email"  name="userName" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  <div *ngIf="userLogForm?.controls.email?.errors?.required && userLogForm?.controls.email?.dirty ">
+    <p><b>This field cannot be left blank</b></p>
+  </div>
+  <div *ngIf="userLogForm?.controls?.email?.errors?.pattern">
+    <p style="color: red"><b>İnvalid E-mail Format  </b></p>
+  </div>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" #password="ngModel" [(ngModel)]="model.password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+  <input type="password" formControlName="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Remember me
